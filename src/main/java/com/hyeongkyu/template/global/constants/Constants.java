@@ -13,6 +13,8 @@ public class Constants {
     public static final String API_PREFIX = "/api/v1";
 
     public static final List<String> NO_NEED_AUTH_URLS = List.of(
+            "/v3/api-docs.html/**",
+            "/v3/api-docs/**",
             "/swagger-ui/**",
             "/api/v1/auth/**"
     );
