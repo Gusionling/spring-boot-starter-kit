@@ -1,6 +1,7 @@
 package com.hyeongkyu.template.global.error;
 
 import com.hyeongkyu.template.global.common.ResponseDto;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -40,6 +41,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     public ResponseDto<?> handleArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error("handleArgumentNotValidException() in GlobalExceptionHandler throw MethodArgumentNotValidException : {}", e.getMessage());
+        return ResponseDto.fail(e);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseDto<?> handleConstraintViolationException(ConstraintViolationException e) {
+        log.error("Constraint violation: {}", e.getMessage());
         return ResponseDto.fail(e);
     }
 
