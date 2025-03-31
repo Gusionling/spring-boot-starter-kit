@@ -10,6 +10,7 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springdoc.core.utils.SpringDocUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,6 +31,18 @@ import java.util.Collections;
 @Configuration
 @OpenAPIDefinition // API 문저를 정의하는 클래스임을 나타낸다.
 public class SwaggerConfig {
+
+    @Value("${swagger.title:API}")
+    private String title;
+
+    @Value("${swagger.description:Spring Boot 템플릿}")
+    private String description;
+
+    @Value("${swagger.version:0.0.1}")
+    private String version;
+
+    @Value("${swagger.external-docs-description:Spring Boot 프로젝트 템플릿 API 문서}")
+    private String externalDocsDescription;
 
     // JWT 보안 스키마 정리
     // SecurityScheme 이 API 인증 방식을 정의한다.
@@ -68,18 +81,17 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI openApi() {
-        String description = "Spring Boot 템플릿";
         String securityRequirementName = "bearerAuth";
         return new OpenAPI()
                 .servers(Collections.singletonList(new Server().url("/")))
                 .security(Collections.singletonList(new SecurityRequirement().addList(securityRequirementName)))
                 .components(new Components().addSecuritySchemes(securityRequirementName, securityScheme))
                 .info(new Info()
-                        .title(" API")
+                        .title(title)
                         .description(description)
-                        .version("0.0.1")
+                        .version(version)
                 )
-                .externalDocs(new ExternalDocumentation().description("Spring Boot 프로젝트 템플릿 API 문서"));
+                .externalDocs(new ExternalDocumentation().description(externalDocsDescription));
     }
 
 
