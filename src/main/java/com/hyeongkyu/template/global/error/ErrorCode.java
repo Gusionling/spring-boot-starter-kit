@@ -21,6 +21,12 @@ public enum ErrorCode {
     MISSING_REQUEST_PARAMETER(HttpStatus.BAD_REQUEST, "E400003", "필수 파라미터가 누락되었습니다."),
     BAD_REQUEST_JSON(HttpStatus.BAD_REQUEST, "E400004", "잘못된 JSON 형식입니다."),
 
+    // Invalid Argument Error (추가적인 400 에러들)
+    INVALID_ARGUMENT(HttpStatus.BAD_REQUEST, "E400005", "요청에 유효하지 않은 인자입니다."),
+    INVALID_HEADER_ERROR(HttpStatus.BAD_REQUEST, "E400006", "유효하지 않은 헤더입니다."),
+    MISSING_REQUEST_HEADER(HttpStatus.BAD_REQUEST, "E400007", "필수 요청 헤더가 누락되었습니다."),
+    BAD_REQUEST_PARAMETER(HttpStatus.BAD_REQUEST, "E400008", "잘못된 요청 파라미터입니다."),
+
     // 401 UNAUTHORIZED
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "E401001", "인증이 필요합니다."),
     INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "E401002", "유효하지 않은 토큰입니다."),
@@ -40,6 +46,8 @@ public enum ErrorCode {
 
     // 500 INTERNAL SERVER ERROR
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E500001", "서버 내부 오류가 발생했습니다.");
+
+
 
     private final HttpStatus httpStatus;
     private final String code;
