@@ -22,6 +22,11 @@ spring:
                 format_sql: true
                 dialect: org.hibernate.dialect.MySQL8Dialect
 
+jwt:
+    secret-key: ${JWT_SECRET_KEY}
+    access-token-expire-period: 3600
+    refresh-token-expire-period: 604800
+
 # application.yml
 swagger:
     title: "프로젝트명 API"
