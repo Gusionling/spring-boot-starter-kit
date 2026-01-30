@@ -26,14 +26,14 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    @Value("${jwt.secret-key")
+    @Value("${jwt.secret-key}")
     private String secretKey;
 
-    @Value("${jwt.access-token-expire-period")
+    @Value("${jwt.access-token-expire-period}")
     private Integer accessTokenExpirePeriod;
 
     @Getter
-    @Value("${jwt.refresh-token-expire-period")
+    @Value("${jwt.refresh-token-expire-period}")
     private Integer refreshTokenExpiredPeriod;
 
     private Key key;
