@@ -1,0 +1,19 @@
+spring:
+  config:
+    activate:
+      on-profile: "local"
+
+  # mysql 데이터 베이스
+  datasource:
+    url: jdbc:mysql://localhost:3308/${DB_NAME}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+jwt:
+  secret-key: ${JWT_SECRET_KEY}
+  access-token-expire-period: 3600
+  refresh-token-expire-period: 604800

@@ -1,31 +1,18 @@
 spring:
     application:
         name: template
+    profiles:
+        active: local
     config:
         import:
-            - classpath:/yaml/application-secret.yml
-    profiles:
-        include: secret
+            - classpath:application-secret.yml
 
-    # mysql 데이터 베이스
-    datasource:
-        url: jdbc:mysql://localhost:3306/${DB_NAME}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-        username: root
-        password: ${DB_PASSWORD}
-        driver-class-name: com.mysql.cj.jdbc.Driver
     jpa:
-        hibernate:
-            ddl-auto: update
         show-sql: true
         properties:
             hibernate:
                 format_sql: true
                 dialect: org.hibernate.dialect.MySQL8Dialect
-
-jwt:
-    secret-key: ${JWT_SECRET_KEY}
-    access-token-expire-period: 3600
-    refresh-token-expire-period: 604800
 
 # application.yml
 swagger:

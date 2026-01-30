@@ -1,0 +1,15 @@
+services:
+  # 1. 메인 데이터베이스 (MySQL)
+  db:
+    image: mysql:8.0
+    container_name: test-mysql
+    ports:
+      - "3308:3306" # 내 컴퓨터 3308포트랑 연결
+    environment:
+      MYSQL_ROOT_PASSWORD: test123!
+      MYSQL_DATABASE: localdb    # 데이터베이스 이름
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test123!
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./data/mysql:/var/lib/mysql # 데이터를 내 컴퓨터에 저장

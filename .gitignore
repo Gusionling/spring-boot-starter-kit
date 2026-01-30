@@ -160,4 +160,5 @@ build/
 !gradlew
 !gradlew.bat
 
-src/main/resources/yaml/application-secret.yml
+src/main/resources/application-secret.yml
+/data
